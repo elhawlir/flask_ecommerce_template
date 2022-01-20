@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h2>Products</h2>
+<div class="row">
+    <div class="messages-tab"><h4>Buy Products</h4></div><br>
+    <form class="checkout justify-content-center" action="/create-checkout-session" method="POST">    
+    <div class="col-sm-4">
+        <strong>Product 1</strong><br>        
+            <div class="quantity-setter">
+                <!-- <button class="increment-btn" id="subtract" disabled type="button">-</button> -->
+                <input type="number" id="quantity-input" min="0" max="5" value="1" name="quantity-200" />
+                <!-- <button class="increment-btn" id="add" type="button">+</button> -->
+            </div><br>
+    </div>
+    <div class="col-sm-4">
+        <strong>Product 2</strong><br>
+            <div class="quantity-setter">
+                <!-- <button class="increment-btn" id="subtract" disabled type="button">-</button> -->
+                <input type="number" id="quantity-input" min="0" max="5" value="1" name="quantity-400" />
+                <!-- <button class="increment-btn" id="add" type="button">+</button> -->
+            </div><br>
+    </div>
+    <div class="col-sm-4">
+    <strong>Product 3</strong><br>        
+            <div class="quantity-setter">
+                <input type="number" id="quantity-input" min="0" max="5" value="1" name="quantity-1000" />
+            </div><br>            
+    </div>
+    <button type="submit" class="buy" id="buy">Checkout</button>
+</form>
+</div>
+{% endblock %}

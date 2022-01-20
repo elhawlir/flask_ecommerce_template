@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}Send Message{% endblock %}
+
+{% block content %}
+<h2>Send Message to Members</h2>
+
+<!-- upload csv -->
+<form method='post' action="{{ url_for('send_txt') }}" enctype='multipart/form-data'>
+    <strong><label>Upload csv file of your members mobile numbers</label></strong><br>
+    <input id="csv_file" type="file" name="data_file" accept=".csv" /><br /><br />
+    <input id="csv_upload" type='submit' value='Upload'><br /><br />
+</form>
+
+
+<!-- write up message and send using twilio -->
+<form method="post" action="{{ url_for('send_txt') }}">
+    <!-- populate drop down list -->
+    <strong><label>Select the column where your members mobile numbers are stored</label></strong><br />
+    <select name="columns" id="file_columns">
+        <!-- {% if data_frame is defined %}
+            {% for item in data_frame.keys() %}
+            <option id="chosen_column" value="{{item}}" selected>{{ item }}</option>
+            {% endfor %}
+        {% endif %} -->
+        {% if columns is defined %}
+            {% for item in columns %}
+            <option id="chosen_column" value="{{item}}" selected>{{ item }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <br /><br />
+
+    <!-- Choose the Twilio number you will use to send the messages -->
+    <!-- <strong><label>Select the mobile number you want to use:</label></strong><br />
+    <select name="numbers" id="twilio_numbers">
+        {% if data_frame is defined %}
+            {% for number in data_frame[0] %}
+            <option id="chosen_number" value="{{number}}" selected>{{ number }}</option>
+            {% endfor %}
+        {% endif %}
+    </select><br /><br /> -->
+
+
+    <strong><label for="twilio_number">Use a name your customers can identify you with (must be less than 11 characters) </label></strong><br>
+    <input type="text" id="twilio_number" name="twilio_number" placeholder="name must be 11 characters or less" maxlength="11"><br><br>
+
+    <!-- Write up the msg and send it -->
+    <strong><label>Write up the message you wish to send to your members</label></strong><br />
+        {% if columns is defined %}
+            <textarea name="text" placeholder="Get your message across in 160 characters" maxlength="160"></textarea><br /><br />
+        {% endif %}            
+    <input id="send_message" type="submit" onclick="this.disabled=true;this.value='Sending, please wait...';this.form.submit();" value="Send Message"><br /><br>
+    <!-- <div class="msg"><strong>{{ msg }}</strong></div> -->
+</form>
+
+{% endblock %}

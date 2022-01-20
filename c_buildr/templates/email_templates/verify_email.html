@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<title>Confirm Email</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<p>
+            Thank you for registering with COMPANY NAME!
+            We've just sent out a confirmation url to <strong>{{email}}</strong> that will expire in 2 hours.
+            <br><br>
+            Be sure to check your Spam in case you can't find the email. Once you've clicked on the email<br>
+            you'll be directed to your home page.<br><br>
+            Any troubles along the way, reach out to us on <a href="mailto:support@example.com">support@example.com</a><br><br>
+
+            Thanks for coming along with us on this journey!
+        </p>
+	</body>
+</html>

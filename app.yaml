@@ -1,0 +1,19 @@
+runtime: python38
+
+handlers:
+# This configures Google App Engine to serve the files in the app's static
+# directory.
+- url: /static
+  static_dir: c_buildr/static/
+
+# This handler routes all requests not caught above to your main app. It is
+# required when static routes are defined, but can be omitted (along with
+# the entire handlers section) when there are no static files defined.
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301
+
+# warmup requests to reduce latency
+inbound_services:
+- warmup

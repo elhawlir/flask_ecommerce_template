@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Change Password</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>Add New Password</h1>
+			<form action="{{ url_for('reset_with_token', token=token) }}" method="post">
+				<label for="password">
+					<i class="fas fa-lock"></i>                    
+				</label>
+                <input type="password" name="password" placeholder="New Password" id="password" required>
+                <!-- <label for="confirm_password">
+					<i class="fas fa-lock"></i>                    
+				</label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" id="password" required> -->
+                <span><div class="msg">{{ msg }}</div></span>				
+				<input type="submit" value="Reset Password">
+			</form>
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<div>
+<p>Hey {{ account['first_name'].capitalize() }}!<br>
+    <h4>Here's the best way to get started:</h4>
+    <ul>
+        <li>If you've got a csv file with your members details, especially their mobile numbers, then you don't have to do anything more.<br>You can start <a href="/send_txt">sending messages</a></li>
+        <li>Otherwise, if you have them saved in an excel file, you need to save that file as a csv to get started <a href="/send_txt">sending messages</a></li>
+        <li>If you experience any problems along the way, don't hesitate to email us: <a href="mailto:support@example.com">support@example.com</a></li>
+    </ul>
+</p>
+</div>
+
+<!-- Functions community builder can use to manage their community -->
+<div>
+    <h3>Functions</h3>
+    <table>
+        <tr>
+            <td><a href="/send_txt">Function 1</a></td>
+            <td>Send a message to your members/customers in less than 30 seconds!</td>
+            <!-- <td>NOTE: Make sure you connect to your Twilio account above before you send a text message to your members</td> -->
+            
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
